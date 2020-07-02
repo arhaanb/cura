@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactRouter} from '@ionic/react-router';
 import Home from './pages/Home';
+import Login from './pages/Login'
+import Register from './pages/Register'
+import {getCurrentUser} from './firebaseConfig'
+import {setUserState} from './Reducers/Actions'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,16 +26,46 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Dashboard from './pages/Dashboard';
+import { Component } from 'ionicons/dist/types/stencil-public-runtime';
+import { useDispatch } from 'react-redux';
 
-const App: React.FC = () => (
+
+//Routes
+const Routing: React.FC = () =>{
+return(  
+<IonReactRouter>
+  <IonRouterOutlet>
+    <Route path="/home" component={Home} exact={true} />
+    <Route exact path="/" render={() => <Redirect to="/login" />} />
+    <Route path='/login' component={Login} exact/>
+    <Route path='/Register' component={Register} exact/>
+    <Route path='/Dashboard' component={Dashboard}/>
+  </IonRouterOutlet>
+</IonReactRouter>)
+}
+
+
+//Authentication
+const App: React.FC = () => {
+  const dispatch = useDispatch()
+  useEffect(() =>{
+    getCurrentUser().then((user:any) =>{
+    if(user){
+      dispatch(setUserState(user.email))
+            window.history.replaceState({},'','/dashboard')
+    }else{
+             window.history.replaceState({},'','/')
+     }
+  })
+ },[])
+  
+  
+  
+  return ( 
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+    <Routing/>
+  </IonApp>)
+};
 
 export default App;
