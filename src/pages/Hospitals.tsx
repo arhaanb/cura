@@ -9,14 +9,8 @@ import {logoutUser} from '../firebaseConfig'
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline} from 'ionicons/icons';
 
 
-const Dashboard: React.FC = () => {
+const Hospitals: React.FC = () => {
 
-  const username = useSelector((state:any) => state.user.username)
-  const history = useHistory()
-  async function logout (){
-    await logoutUser()
-    history.replace('/login')
-  }
   //{username} is the registered username so use that kbye
   return (
     <IonPage>
@@ -25,16 +19,13 @@ const Dashboard: React.FC = () => {
       <IonContent>
       <IonToolbar>
         </IonToolbar>
-        <p className='Greeting'> Hello {username}</p>
+        <p>HOSPITALS</p>
         <IonHeader collapse="condense">
         </IonHeader> 
-        <IonButton className='logoutButton'  onClick={logout}>Logout</IonButton>
         <IonFab slot='fixed' vertical='bottom' horizontal='end'>
-        <IonFabButton>  
         <IonFabButton>   
         <IonIcon icon={analyticsOutline}/>
              </IonFabButton>
-            </IonFabButton>
         <IonFabList side='top'>        
         <IonFabButton routerLink='/Vaccines'>
         <IonIcon icon={eyedropOutline}/>
@@ -55,4 +46,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default Hospitals;

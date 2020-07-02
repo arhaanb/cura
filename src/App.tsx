@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import {getCurrentUser} from './firebaseConfig'
 import {setUserState} from './Reducers/Actions'
+import Hospitals from './pages/Hospitals'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -29,6 +30,8 @@ import './theme/variables.css';
 import Dashboard from './pages/Dashboard';
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { useDispatch } from 'react-redux';
+import Vaccines from './pages/Vaccines';
+import News from './pages/News';
 
 
 //Routes
@@ -41,6 +44,9 @@ return(
     <Route path='/login' component={Login} exact/>
     <Route path='/Register' component={Register} exact/>
     <Route path='/Dashboard' component={Dashboard}/>
+    <Route path='/Hospitals' component={Hospitals} exact/>
+    <Route path='/Vaccines' component={Vaccines} exact/>
+    <Route path='/News' component={News} exact/>
   </IonRouterOutlet>
 </IonReactRouter>)
 }
