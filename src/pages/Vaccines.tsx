@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab,IonFabButton,IonFabList, IonIcon } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab,IonFabButton,IonFabList, IonIcon,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle } from '@ionic/react';
 import React from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
@@ -11,17 +11,58 @@ import { eyedropOutline, barChartOutline, heartOutline, personOutline, analytics
 
 const Vaccines: React.FC = () => {
 
-  //{username} is the registered username so use that kbye
+  //Lmao sorry for messy code but just style kthx ly
   return (
     <IonPage>
       <IonHeader>
       </IonHeader>
       <IonContent>
-      <IonToolbar>
-        </IonToolbar>
         <p>Vaccines</p>
-        <IonHeader collapse="condense">
-        </IonHeader> 
+        <IonCard color='tertiary'>
+          <IonCardHeader>
+            <IonCardTitle>HARDCODE VACCINE NAMES</IonCardTitle>
+            <IonCardSubtitle>its 4AM im sleepy</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+              SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS 
+      </IonCardContent>
+        </IonCard>
+        <IonCard color='tertiary'>
+          <IonCardHeader>
+          <IonCardTitle>HARDCODE VACCINE NAMES</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+          SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS 
+      </IonCardContent>
+        </IonCard>
+        <IonCard color='tertiary'>
+          <IonCardHeader>
+          <IonCardTitle>HARDCODE VACCINE NAMES</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+          SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS 
+      </IonCardContent>
+        </IonCard>
+        <IonCard color='tertiary'>
+          <IonCardHeader>
+          <IonCardTitle>HARDCODE VACCINE NAMES</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+          SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS 
+      </IonCardContent>
+        </IonCard>
+                <IonCard color='tertiary'>
+          <IonCardHeader>
+          <IonCardTitle>HARDCODE VACCINE NAMES</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+          SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS SHOTS 
+      </IonCardContent>
+        </IonCard>
         <IonFab slot='fixed' vertical='bottom' horizontal='end'>
         <IonFabButton>   
         <IonIcon icon={analyticsOutline}/>

@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab,IonFabButton,IonFabList, IonIcon } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab,IonFabButton,IonFabList, IonIcon,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle } from '@ionic/react';
 import React from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
@@ -17,11 +17,62 @@ const News: React.FC = () => {
       <IonHeader>
       </IonHeader>
       <IonContent>
-      <IonToolbar>
-        </IonToolbar>
         <p>NEWS</p>
-        <IonHeader collapse="condense">
-        </IonHeader> 
+        <IonCard color='light'>
+          <IonCardHeader>
+            <IonCardTitle>ARHAAN Heart AP</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+              ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+      </IonCardContent>
+        </IonCard>
+        <IonCard color='light'>
+          <IonCardHeader>
+            <IonCardTitle>ARHAAN Heart AP</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+              ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+      </IonCardContent>
+        </IonCard>
+        <IonCard color='light'>
+          <IonCardHeader>
+            <IonCardTitle>ARHAAN Heart AP</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+              ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+      </IonCardContent>
+        </IonCard>
+        <IonCard color='light'>
+          <IonCardHeader>
+            <IonCardTitle>ARHAAN Heart AP</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+              ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+      </IonCardContent>
+        </IonCard>
+                <IonCard color='light'>
+          <IonCardHeader>
+            <IonCardTitle>ARHAAN Heart AP</IonCardTitle>
+            <IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent>
+              ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+              ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
+      </IonCardContent>
+        </IonCard>
         <IonFab slot='fixed' vertical='bottom' horizontal='end'>
         <IonFabButton>   
         <IonIcon icon={analyticsOutline}/>
