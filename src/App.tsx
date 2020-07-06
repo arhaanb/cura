@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter} from '@ionic/react-router';
+import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Login from './pages/Login'
 import Register from './pages/Register'
-import {getCurrentUser} from './firebaseConfig'
-import {setUserState} from './Reducers/Actions'
+import { getCurrentUser } from './firebaseConfig'
+import { setUserState } from './Reducers/Actions'
 import Hospitals from './pages/Hospitals'
 
 /* Core CSS required for Ionic components to work properly */
@@ -37,44 +37,44 @@ import Admin from './pages/admindash';
 
 
 //Routes
-const Routing: React.FC = () =>{
-return(  
-<IonReactRouter>
-  <IonRouterOutlet>
-    <Route path="/home" component={Home} exact={true} />
-    <Route exact path="/" render={() => <Redirect to="/login" />} />
-    <Route path='/login' component={Login} exact/>
-    <Route path='/Register' component={Register} exact/>
-    <Route path='/admindash' component={Admin} exact/>
-    <Route path='/Dashboard' component={Dashboard}/>
-    <Route path='/Hospitals' component={Hospitals} exact/>
-    <Route path='/Vaccines' component={Vaccines} exact/>
-    <Route path='/News' component={News} exact/>
-  </IonRouterOutlet>
-</IonReactRouter>)
+const Routing: React.FC = () => {
+	return (
+		<IonReactRouter>
+			<IonRouterOutlet>
+				<Route path="/home" component={Home} exact={true} />
+				<Route exact path="/" render={() => <Redirect to="/login" />} />
+				<Route path='/login' component={Login} exact />
+				<Route path='/Register' component={Register} exact />
+				<Route path='/admindash' component={Admin} exact />
+				<Route path='/Dashboard' component={Dashboard} />
+				<Route path='/Hospitals' component={Hospitals} exact />
+				<Route path='/Vaccines' component={Vaccines} exact />
+				<Route path='/News' component={News} exact />
+			</IonRouterOutlet>
+		</IonReactRouter>)
 }
 
 
 //Authentication
 const App: React.FC = () => {
-  const dispatch = useDispatch()
-  useEffect(() =>{
-    getCurrentUser().then((user:any) =>{
-    if(user){
-      dispatch(setUserState(user.email))
-            window.history.replaceState({},'','/dashboard')
-    }else{
-             window.history.replaceState({},'','/')
-     }
-  })
- },[])
-  
-  
-  
-  return ( 
-  <IonApp>
-    <Routing/>
-  </IonApp>)
+	const dispatch = useDispatch()
+	useEffect(() => {
+		getCurrentUser().then((user: any) => {
+			if (user) {
+				dispatch(setUserState(user.email))
+				window.history.replaceState({}, '', '/dashboard')
+			} else {
+				window.history.replaceState({}, '', '/')
+			}
+		})
+	}, [])
+
+
+
+	return (
+		<IonApp>
+			<Routing />
+		</IonApp>)
 };
 
 export default App;

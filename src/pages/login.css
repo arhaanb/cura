@@ -1,19 +1,19 @@
-.Formstyle{
-    top: 50%;
-    align-items: center;
+.Formstyle {
+	top: 50%;
+	align-items: center;
 }
 
-.form{
-    width: 100%;
-    align-items: center;
-    left: 42%;
+.form {
+	width: 100%;
+	align-items: center;
+	left: 42%;
 }
 
-.buttonLogin{
-    margin-left: 35px;
-    width: 300px;
+.buttonLogin {
+	margin-left: 35px;
+	width: 300px;
 }
 
-.help{
-    margin-left: 95px;
+.help {
+	margin-left: 95px;
 }
