@@ -1,24 +1,40 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab,IonFabButton,IonFabList, IonIcon } from '@ionic/react';
-import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab,IonFabButton,IonFabList, IonIcon,IonInput } from '@ionic/react';
+import React ,{useState}from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
 import {getCurrentUser} from '../firebaseConfig';
-import { Redirect, useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import {logoutUser} from '../firebaseConfig'
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline} from 'ionicons/icons';
+import { Toast } from '../toast';
 const axios = require('axios')
 
 
-const Dashboard: React.FC = () => {
-  const [data,setData] = useState('')
-  const [user,setUser] = useState('')
 
-  const username = useSelector((state:any) => state.user.username)
-  const history = useHistory()
+const Admin: React.FC = () => {
+    const history = useHistory()
+
   async function logout (){
     await logoutUser()
     history.replace('/login')
+  }
+  const [hostp,setHosp] = useState('');
+  const [description,setDescription] = useState('');
+  const [vaccines,setVaccines] = useState('');
+  const [location,setLocation] = useState('')
+  function sendHospital(){
+    axios.post('https://api.arhaanb.co/cura/hospitals',{
+        name: hostp,
+        description:description,
+        vaccines:vaccines,
+        location:location
+    }).then((res:any) =>{
+        console.log(res)
+        Toast('Hospital Registered')
+    }).catch((error:any) => {
+        console.error(error)
+      })
   }
   //{username} is the registered username so use that kbye
   return (
@@ -28,9 +44,17 @@ const Dashboard: React.FC = () => {
       <IonContent>
       <IonToolbar>
         </IonToolbar>
-        <p className='Greeting'> Hello {username}</p>
+        <p className='Greeting'> Hello Minte</p>
         <IonHeader collapse="condense">
         </IonHeader> 
+        <IonInput className="form" placeholder="hospital" onIonChange={(e:any) => setHosp(e.target.value)}/>
+            <IonInput className="form" placeholder="description" onIonChange={(e:any) => setDescription(e.target.value)}/>
+            <IonInput  className="form" placeholder="vaccines" onIonChange={(e:any) => setVaccines(e.target.value)}/>
+            <IonInput  className="form" placeholder="Location" onIonChange={(e:any) => setLocation(e.target.value)}/>
+        <IonButton color="secondary" className="buttonLogin" onClick={sendHospital}>Register</IonButton>
+        <br>
+        </br>
+        <br/>
         <IonButton className='logoutButton'  onClick={logout}>Logout</IonButton>
         <IonFab slot='fixed' vertical='bottom' horizontal='end'>
         <IonFabButton>  
@@ -58,4 +82,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default Admin;

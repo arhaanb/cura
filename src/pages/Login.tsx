@@ -20,15 +20,19 @@ const Login: React.FC = () => {
             Toast('Wrong login')
         }else{Toast('Logged In')
         try
-        {history.replace('/dashboard')
-        dispatch(setUserState(res.user.email))}
+        {dispatch(setUserState(res.user.email))
+        if (Username === 'minet' || Password === 'minettime'){
+            history.replace('/admindash')}
+        else 
+           {history.replace('/dashboard')}
+        }
         catch(error){
             Toast(error)
             console.log(error)
         }
     }}
   return (
-    <IonPage>
+    <IonPage className='body'>
         <IonContent className="Formstyle">
             <IonInput className="form" placeholder="Username" onIonChange={(e:any) => setUsername(e.target.value)}/>
             <IonInput type='password' className="form" placeholder="Password" onIonChange={(e:any) => setPassword(e.target.value)}/>

@@ -32,6 +32,8 @@ import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { useDispatch } from 'react-redux';
 import Vaccines from './pages/Vaccines';
 import News from './pages/News';
+import admindash from './pages/admindash';
+import Admin from './pages/admindash';
 
 
 //Routes
@@ -43,6 +45,7 @@ return(
     <Route exact path="/" render={() => <Redirect to="/login" />} />
     <Route path='/login' component={Login} exact/>
     <Route path='/Register' component={Register} exact/>
+    <Route path='/admindash' component={Admin} exact/>
     <Route path='/Dashboard' component={Dashboard}/>
     <Route path='/Hospitals' component={Hospitals} exact/>
     <Route path='/Vaccines' component={Vaccines} exact/>
