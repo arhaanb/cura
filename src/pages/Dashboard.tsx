@@ -1,5 +1,5 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab,IonFabButton,IonFabList, IonIcon } from '@ionic/react';
-import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab,IonFabButton,IonFabList, IonIcon, useIonViewWillEnter } from '@ionic/react';
+import React, { useState, ComponentLifecycle } from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
 import {getCurrentUser} from '../firebaseConfig';
@@ -13,9 +13,10 @@ const axios = require('axios')
 const Dashboard: React.FC = () => {
   const [data,setData] = useState('')
   const [user,setUser] = useState('')
-
   const username = useSelector((state:any) => state.user.username)
   const history = useHistory()
+
+
   async function logout (){
     await logoutUser()
     history.replace('/login')
