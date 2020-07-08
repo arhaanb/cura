@@ -1,98 +1,94 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
-import React from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonItem, IonBadge, IonLabel, IonAlert, useIonViewWillEnter, IonCard, IonCardTitle, IonCardContent, IonCardSubtitle, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
+import React, { useState, useEffect } from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
 import { getCurrentUser } from '../firebaseConfig';
 import { Redirect, useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { logoutUser } from '../firebaseConfig'
-import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
-
+import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline, key } from 'ionicons/icons';
+import { hostname } from 'os';
+import Vaccines from './Vaccines';
+import { State } from 'ionicons/dist/types/stencil-public-runtime';
+const axios = require('axios')
 
 const News: React.FC = () => {
+	const [showAlert, setShowAlert] = useState(false);
 
-	//{username} is the registered username so use that kbye
+	//Basically, data aa raha hai but it isnt being saved to this state figure out what type the data is and use proper brackets in the state
+	const [hospital, setHospital] = useState([{
+		description: '',
+		location: '',
+		name: '',
+		vaccines: '',
+		id: ''
+	}
+
+	])
+
+
+	useEffect(() => {
+		axios.get('https://api.arhaanb.co/cura/hospitals')
+			.then((res: any) => {
+				setHospital(res.data)
+			})
+	}, [])
+
+	
+	console.log(hospital)
+	const data = hospital
+
+
+	async function dataloader() {
+
+	}
+
+	//load data every time view mounts
+	const mount = useIonViewWillEnter(dataloader)
+
+
 	return (
 		<IonPage>
 			<IonHeader>
 			</IonHeader>
-			<IonContent>
-				<p>NEWS</p>
-				<IonCard color='light'>
-					<IonCardHeader>
-						<IonCardTitle>ARHAAN Heart AP</IonCardTitle>
-						<IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
-					</IonCardHeader>
-					<IonCardContent>
-						ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-      </IonCardContent>
-				</IonCard>
-				<IonCard color='light'>
-					<IonCardHeader>
-						<IonCardTitle>ARHAAN Heart AP</IonCardTitle>
-						<IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
-					</IonCardHeader>
-					<IonCardContent>
-						ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-      </IonCardContent>
-				</IonCard>
-				<IonCard color='light'>
-					<IonCardHeader>
-						<IonCardTitle>ARHAAN Heart AP</IonCardTitle>
-						<IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
-					</IonCardHeader>
-					<IonCardContent>
-						ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-      </IonCardContent>
-				</IonCard>
-				<IonCard color='light'>
-					<IonCardHeader>
-						<IonCardTitle>ARHAAN Heart AP</IonCardTitle>
-						<IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
-					</IonCardHeader>
-					<IonCardContent>
-						ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-                   </IonCardContent>
-				</IonCard>
-				<IonCard color='light'>
-					<IonCardHeader>
-						<IonCardTitle>ARHAAN Heart AP</IonCardTitle>
-						<IonCardSubtitle>Awwwwwwww</IonCardSubtitle>
-					</IonCardHeader>
-					<IonCardContent>
-						ARHAAN ARHAAN ARHAAN ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-						ARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAANARHAAN ARHAAN ARHAAN
-      </IonCardContent>
-				</IonCard>
-				<IonFab slot='fixed' vertical='bottom' horizontal='end'>
-					<IonFabButton>
-						<IonIcon icon={analyticsOutline} />
-					</IonFabButton>
-					<IonFabList side='top'>
-						<IonFabButton routerLink='/Vaccines'>
-							<IonIcon icon={eyedropOutline} />
-						</IonFabButton>
-						<IonFabButton routerLink='/news'>
-							<IonIcon icon={barChartOutline}></IonIcon>
-						</IonFabButton>
-						<IonFabButton routerLink='/hospitals'>
-							<IonIcon icon={heartOutline}></IonIcon>
-						</IonFabButton>
-						<IonFabButton routerLink='/dashboard'>
-							<IonIcon icon={personOutline}></IonIcon>
-						</IonFabButton>
-					</IonFabList>
-				</IonFab>
+			<IonContent scrollEvents={true}>
+				<p>HOSPITALS</p>
+
+
+				<IonInfiniteScroll>
+					{hospital.map(hospital => (
+						<IonCard color='dark' key={hospital.name}>
+							<IonCardHeader>
+								<IonCardTitle>{hospital.name}</IonCardTitle>
+								<IonCardSubtitle>{hospital.location}</IonCardSubtitle>
+								<IonCardContent>{hospital.description}</IonCardContent>
+							</IonCardHeader>
+						</IonCard>
+					))}
+				</IonInfiniteScroll>
 			</IonContent>
+
+
+
+			<IonFab slot='fixed' vertical='bottom' horizontal='end'>
+				<IonFabButton>
+					<IonIcon icon={analyticsOutline} />
+				</IonFabButton>
+				<IonFabList side='top'>
+					<IonFabButton routerLink='/Vaccines'>
+						<IonIcon icon={eyedropOutline} />
+					</IonFabButton>
+					<IonFabButton routerLink='/news'>
+						<IonIcon icon={barChartOutline}></IonIcon>
+					</IonFabButton>
+					<IonFabButton routerLink='/hospitals'>
+						<IonIcon icon={heartOutline}></IonIcon>
+					</IonFabButton>
+					<IonFabButton routerLink='/dashboard'>
+						<IonIcon icon={personOutline}></IonIcon>
+					</IonFabButton>
+				</IonFabList>
+			</IonFab>
 		</IonPage>
 	);
 };

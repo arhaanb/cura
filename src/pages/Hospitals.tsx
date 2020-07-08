@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonItem, IonBadge, IonLabel, IonAlert, useIonViewWillEnter, IonCard,IonCardTitle,IonCardContent,IonCardSubtitle,IonCardHeader, IonInfiniteScroll } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonItem, IonBadge, IonLabel, IonAlert, useIonViewWillEnter, IonCard, IonCardTitle, IonCardContent, IonCardSubtitle, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
@@ -17,22 +17,22 @@ const Hospitals: React.FC = () => {
 
 	//Basically, data aa raha hai but it isnt being saved to this state figure out what type the data is and use proper brackets in the state
 	const [hospital, setHospital] = useState([{
-		description:'',
-		location:'',
-		name:'',
-		vaccines:'',
-		id:''
+		description: '',
+		location: '',
+		name: '',
+		vaccines: '',
+		id: ''
 	}
 
 	])
 
 
-	 useEffect(()=>{
+	useEffect(() => {
 		axios.get('https://api.arhaanb.co/cura/hospitals')
-		.then((res: any) => {
-			setHospital(res.data)
-		})
-	},[])
+			.then((res: any) => {
+				setHospital(res.data)
+			})
+	}, [])
 	console.log(hospital)
 	const data = hospital
 
@@ -49,31 +49,32 @@ const Hospitals: React.FC = () => {
 		<IonPage>
 			<IonHeader>
 			</IonHeader>
-			<IonContent>
+			<IonContent scrollEvents={true}>
 				<p>HOSPITALS</p>
-				<IonAlert
-					isOpen={showAlert}
-					onDidDismiss={() => setShowAlert(false)}
-					cssClass='my-custom-class'
-					header={'This Hospital is currently Functional!'}
-					subHeader={'hjh'}
-					message={'Feel Free to Visit!'}
-					buttons={['Okay']} />
-			</IonContent>
 
-			{hospital.map(hospital=>(
+
 				<IonInfiniteScroll>
-				<IonCard color='dark'>
-				<IonCardHeader>
-					<IonCardTitle key={hospital.name}>{hospital.name}</IonCardTitle>
-					<IonCardSubtitle key={hospital.location}>{hospital.location}</IonCardSubtitle>
-					<IonCardContent key={hospital.description}>{hospital.description}</IonCardContent>
-					<IonButton color='secondary' onClick={() => setShowAlert(true)}>More</IonButton>
-				</IonCardHeader>
-				
-				</IonCard>
+					{hospital.map(hospital => (
+						<IonCard color='dark' key={hospital.name}>
+							<IonCardHeader>
+								<IonCardTitle>{hospital.name}</IonCardTitle>
+								<IonCardSubtitle>{hospital.location}</IonCardSubtitle>
+								<IonCardContent>{hospital.description}</IonCardContent>
+								{/* <IonButton color='secondary' onClick={() => setShowAlert(true)}>More</IonButton> */}
+								{/* <IonAlert
+								isOpen={showAlert}
+								onDidDismiss={() => setShowAlert(false)}
+								cssClass='my-custom-class'
+								key={hospital.name}
+								header={hospital.name}
+								subHeader={hospital.location}
+								message={hospital.description}
+								buttons={['Close']} /> */}
+							</IonCardHeader>
+						</IonCard>
+					))}
 				</IonInfiniteScroll>
-			))}
+			</IonContent>
 
 
 
