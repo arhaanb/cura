@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonButton, IonInput } from '@ionic/react';
+import { IonContent, IonPage, IonButton, IonInput,IonCheckbox, IonLabel } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import './login.css';
 import { Toast } from '../toast';
@@ -12,8 +12,10 @@ const Register: React.FC = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [Cpassword, setCPassword] = useState('');
+	const[vaccinated,setVaccinated] = useState(true)
 	const [name, setName] = useState('');
 	const history = useHistory()
+
 	async function reg() {
 		const res = await registerUser(username, password)
 		if (password !== Cpassword) {
@@ -29,7 +31,7 @@ const Register: React.FC = () => {
 			Toast('Registration Complete')
 			axios.post('https://api.arhaanb.co/cura/users', {
 				username: name,
-				vaccinated: 0
+				vaccinated: vaccinated
 			}).then((res: any) => {
 				console.log(res)
 			}).catch((error: any) => {
@@ -45,6 +47,8 @@ const Register: React.FC = () => {
 				<IonInput className="form" placeholder="Name" onIonChange={(e: any) => setName(e.target.value)} />
 				<IonInput type='password' className="form" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)} />
 				<IonInput type='password' className="form" placeholder="Password" onIonChange={(e: any) => setCPassword(e.target.value)} />
+				<IonLabel>Have You Been Vaccinated?</IonLabel>
+				<IonCheckbox checked={vaccinated} onIonChange={e=>setVaccinated(e.detail.checked)}></IonCheckbox>
 				<IonButton className="buttonLogin" onClick={reg}>Register</IonButton>
 				<p className='help'>Already have an Account? <Link to='/login'>Login</Link></p>
 			</IonContent>
