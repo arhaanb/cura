@@ -1,0 +1,33 @@
+.circle {
+	width: 5px;
+	height: 5px;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+.status {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.5em;
+}
+
+.circle.red {
+	background-color: crimson;
+}
+
+.circle.green {
+	background-color: green;
+}
+
+.status p {
+	margin: 0;
+}
+
+.circle {
+	margin-right: 0.4em;
+}
+
+.badge {
+	width: 50%;
+}

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 // import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
 // import { getCurrentUser } from '../firebaseConfig';
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { logoutUser } from '../firebaseConfig'
@@ -42,10 +43,10 @@ const Dashboard: React.FC = () => {
 
 	useEffect(() => {
 		if (Boolean(user) === true) {
-			const vaccineStatus = 'Vaccinated'
+			const vaccineStatus = 'true'
 			setVaccine(vaccineStatus)
 		} else {
-			const vaccineStaus = 'Not Vaccinated'
+			const vaccineStaus = 'false'
 			setVaccine(vaccineStaus)
 		}
 
@@ -58,12 +59,36 @@ const Dashboard: React.FC = () => {
 			<IonContent>
 				<IonGrid>
 					<IonCol>
-						<p className='Greeting'> Hello {username}</p>
-						{/* <IonHeader collapse="condense">
-					</IonHeader> */}
-						{/* <IonTitle size="small">{vaccine}</IonTitle> */}
-						<p>{vaccine}</p>
+
+
+						<div className="header">
+							<h1 className="center title">Hi, {username}</h1>
+							{vaccine === 'true' &&
+								<div>
+									<div className="status">
+										<div className="circle green"></div>
+										<p className="center success">Vaccinated</p>
+									</div>
+									<p className="center">
+										<img src="https://i.postimg.cc/WbnJRwcC/badge.png" alt="" className="badge" />
+									</p>
+								</div>
+							}
+
+							{vaccine === 'false' &&
+								<div>
+									<div className="status">
+										<div className="circle red"></div>
+										<p className="center fail">Not Vaccinated</p>
+									</div>
+									<p className="center">Book an appointment and get <Link to='/hospitals'>vaccinated</Link></p>
+								</div>
+							}
+						</div>
+
 						<IonButton className='logoutButton' expand="block" onClick={logout}>Logout</IonButton>
+
+
 					</IonCol>
 				</IonGrid>
 				<IonFab slot='fixed' vertical='bottom' horizontal='end'>
