@@ -15,6 +15,11 @@ const axios = require('axios')
 
 const Dashboard: React.FC = () => {
 	const [vaccine, setVaccine] = useState('')
+	const [coviddata, setCoviddata] = useState([{
+		confirmed: {},
+		recovered: {},
+		deaths: {},
+	}])
 	const [user, setUser] = useState([{
 		username: '',
 		Vaccinated: false
@@ -28,6 +33,7 @@ const Dashboard: React.FC = () => {
 		history.replace('/login')
 	}
 
+	//HAAN
 
 
 	useEffect(() => {
@@ -37,9 +43,18 @@ const Dashboard: React.FC = () => {
 			setUser(res.data.vaccinated)
 		}).catch((error: any) => {
 			// console.log(error)
-		})
-
+		});
 	}, [username])
+
+	useEffect(() => {
+		axios.get('https://covid19.mathdro.id/api/countries/india')
+			.then((res: any) => {
+				// console.log(res.data)
+				setCoviddata(res.data)
+			})
+		console.log(coviddata)
+	}, [])
+
 
 	useEffect(() => {
 		if (Boolean(user) === true) {
@@ -68,6 +83,7 @@ const Dashboard: React.FC = () => {
 									<div className="status">
 										<div className="circle green"></div>
 										<p className="center success">Vaccinated</p>
+										<p className="center success"></p>
 									</div>
 									<p className="center">
 										<img src="https://i.postimg.cc/WbnJRwcC/badge.png" alt="" className="badge" />
