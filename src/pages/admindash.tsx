@@ -47,10 +47,10 @@ const Admin: React.FC = () => {
 				<p className='Greeting'> Hello Minte</p>
 				<IonHeader collapse="condense">
 				</IonHeader>
-				<IonInput className="form" placeholder="hospital" onIonChange={(e: any) => setHosp(e.target.value)} />
-				<IonInput className="form" placeholder="description" onIonChange={(e: any) => setDescription(e.target.value)} />
-				<IonInput className="form" placeholder="vaccines" onIonChange={(e: any) => setVaccines(e.target.value)} />
-				<IonInput className="form" placeholder="Location" onIonChange={(e: any) => setLocation(e.target.value)} />
+				<IonInput className="form" required={true} placeholder="hospital" onIonChange={(e: any) => setHosp(e.target.value)} />
+				<IonInput className="form" required={true} placeholder="description" onIonChange={(e: any) => setDescription(e.target.value)} />
+				<IonInput className="form" required={true} placeholder="vaccines" onIonChange={(e: any) => setVaccines(e.target.value)} />
+				<IonInput className="form" required={true} placeholder="Location" onIonChange={(e: any) => setLocation(e.target.value)} />
 				<IonButton color="secondary" className="buttonLogin" onClick={sendHospital}>Register</IonButton>
 				<br>
 				</br>

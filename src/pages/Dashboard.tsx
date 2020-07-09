@@ -15,11 +15,9 @@ const axios = require('axios')
 
 const Dashboard: React.FC = () => {
 	const [vaccine, setVaccine] = useState('')
-	const [coviddata, setCoviddata] = useState([{
-		confirmed: {},
-		recovered: {},
-		deaths: {},
-	}])
+	const [confirmed, setConfirmed] = useState()
+	const [recovered, setRecovered] = useState()
+	const [deaths, setDeaths] = useState()
 	const [user, setUser] = useState([{
 		username: '',
 		Vaccinated: false
@@ -50,11 +48,11 @@ const Dashboard: React.FC = () => {
 		axios.get('https://covid19.mathdro.id/api/countries/india')
 			.then((res: any) => {
 				// console.log(res.data)
-				setCoviddata(res.data)
+				setConfirmed(res.data.confirmed.value)
+				setRecovered(res.data.recovered.value)
+				setDeaths(res.data.deaths.value)
 			})
-		console.log(coviddata)
 	}, [])
-
 
 	useEffect(() => {
 		if (Boolean(user) === true) {
@@ -102,6 +100,10 @@ const Dashboard: React.FC = () => {
 							}
 						</div>
 
+						<h1 className="medium">Recent stats</h1>
+						<p className="center fail" key={confirmed}>{confirmed}</p>
+						<p className="center fail" key={recovered}>{recovered}</p>
+						<p className="center fail" key={deaths}>{deaths}</p>
 						<IonButton className='logoutButton' expand="block" onClick={logout}>Logout</IonButton>
 
 

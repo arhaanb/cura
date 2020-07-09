@@ -1,8 +1,8 @@
-import { IonContent, IonButton, IonModal, IonPage, IonFab, IonFabButton, IonFabList, IonIcon, useIonViewWillEnter, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
+import { IonContent, IonButton, IonModal, IonPage, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import '../fonts/fonts.css';
 import './Hospitals.css';
-import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline, key } from 'ionicons/icons';
+import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
 const axios = require('axios')
 
 const Hospitals: React.FC = () => {
@@ -29,9 +29,9 @@ const Hospitals: React.FC = () => {
 	// const data = hospital
 
 
-	async function dataloader() {
+	// async function dataloader() {
 
-	}
+	// }
 
 	//load data every time view mounts
 	// const mount = useIonViewWillEnter(dataloader)
