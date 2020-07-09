@@ -1,20 +1,12 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonItem, IonBadge, IonLabel, IonAlert, useIonViewWillEnter, IonCard, IonCardTitle, IonCardContent, IonCardSubtitle, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
+import { IonContent, IonButton, IonModal, IonPage, IonFab, IonFabButton, IonFabList, IonIcon, useIonViewWillEnter, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Dashboard.css';
-import { getCurrentUser } from '../firebaseConfig';
-import { Redirect, useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
-import { logoutUser } from '../firebaseConfig'
+import '../fonts/fonts.css';
+import './Hospitals.css';
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline, key } from 'ionicons/icons';
-import { hostname } from 'os';
-import Vaccines from './Vaccines';
-import { State } from 'ionicons/dist/types/stencil-public-runtime';
 const axios = require('axios')
 
-const News: React.FC = () => {
-	const [showAlert, setShowAlert] = useState(false);
-
+const Hospitals: React.FC = () => {
+	const [showModal, setShowModal] = useState(false);
 	//Basically, data aa raha hai but it isnt being saved to this state figure out what type the data is and use proper brackets in the state
 	const [hospital, setHospital] = useState([{
 		description: '',
@@ -33,10 +25,8 @@ const News: React.FC = () => {
 				setHospital(res.data)
 			})
 	}, [])
-
-	
-	console.log(hospital)
-	const data = hospital
+	// console.log(hospital)
+	// const data = hospital
 
 
 	async function dataloader() {
@@ -44,27 +34,50 @@ const News: React.FC = () => {
 	}
 
 	//load data every time view mounts
-	const mount = useIonViewWillEnter(dataloader)
+	// const mount = useIonViewWillEnter(dataloader)
 
 
 	return (
 		<IonPage>
-			<IonHeader>
-			</IonHeader>
+			{/* <IonHeader>
+			</IonHeader> */}
 			<IonContent scrollEvents={true}>
-				<p>HOSPITALS</p>
 
-
+				<div className="header">
+					<h1 className="center title zero">
+						<img src="https://i.postimg.cc/mkwK68Vw/CuraPass.png" alt="" className="curapass" />
+					</h1>
+					<p className="center zero">Get your passes.</p>
+				</div>
 				<IonInfiniteScroll>
 					{hospital.map(hospital => (
-						<IonCard color='dark' key={hospital.name}>
+						<IonCard color='dark' className="card" key={hospital.name}>
 							<IonCardHeader>
-								<IonCardTitle>{hospital.name}</IonCardTitle>
-								<IonCardSubtitle>{hospital.location}</IonCardSubtitle>
-								<IonCardContent>{hospital.description}</IonCardContent>
+								<h1 className="namehosp">{hospital.name} Hospital</h1>
+								<h5 className="location">{hospital.location}</h5>
+								<h5>{hospital.vaccines} vaccines available</h5>
+								<p className="desc">{hospital.description}</p>
+								<div className="flex-center">
+									<IonButton className='appointment' size="small" onClick={() => setShowModal(true)}>Request an Appointment</IonButton>
+								</div>
+								{/* <IonAlert
+									isOpen={showAlert}
+									onDidDismiss={() => setShowAlert(false)}
+									cssClass='my-custom-class'
+									header='Success'
+									subHeader='gg'
+									message='chutchutchut'
+									buttons={['Close']} /> */}
 							</IonCardHeader>
 						</IonCard>
 					))}
+					<IonModal isOpen={showModal} cssClass='my-custom-class'>
+						<h1 className="center topmod">Show this to the scanner at the hospital to avail your vaccine.</h1>
+						<div className="flex-center qrcode">
+							<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
+						</div>
+						<IonButton onClick={() => setShowModal(false)} className="modbtn">Close</IonButton>
+					</IonModal>
 				</IonInfiniteScroll>
 			</IonContent>
 
@@ -93,4 +106,4 @@ const News: React.FC = () => {
 	);
 };
 
-export default News;
+export default Hospitals;

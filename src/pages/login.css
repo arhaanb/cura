@@ -1,19 +1,24 @@
-.Formstyle {
-	top: 50%;
-	align-items: center;
+.center {
+	text-align: center;
 }
 
-.form {
-	width: 100%;
+.contain {
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
-	left: 42%;
 }
 
 .buttonLogin {
-	margin-left: 35px;
-	width: 300px;
+	margin-top: 2em;
 }
 
-.help {
-	margin-left: 95px;
+.cura {
+	width: 40%;
+	margin-bottom: 1.5em;
+}
+
+a {
+color: #6699ee !important;
 }

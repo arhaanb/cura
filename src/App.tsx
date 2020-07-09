@@ -28,12 +28,13 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Dashboard from './pages/Dashboard';
-import { Component } from 'ionicons/dist/types/stencil-public-runtime';
+// import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { useDispatch } from 'react-redux';
 import Vaccines from './pages/Vaccines';
 import News from './pages/News';
-import admindash from './pages/admindash';
+// import admindash from './pages/admindash';
 import Admin from './pages/admindash';
+import './fonts/fonts.css';
 
 
 //Routes

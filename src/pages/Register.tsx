@@ -1,6 +1,6 @@
-import { IonContent, IonPage, IonButton, IonInput,IonCheckbox, IonLabel } from '@ionic/react';
-import React, { useState, useEffect } from 'react';
-import './login.css';
+import { IonContent, IonPage, IonButton, IonInput, IonCheckbox, IonLabel, IonGrid } from '@ionic/react';
+import React, { useState } from 'react';
+import './Register.css';
 import { Toast } from '../toast';
 import { registerUser } from '../firebaseConfig'
 import { Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ const Register: React.FC = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [Cpassword, setCPassword] = useState('');
-	const[vaccinated,setVaccinated] = useState(true)
+	const [vaccinated, setVaccinated] = useState(true)
 	const [name, setName] = useState('');
 	const history = useHistory()
 
@@ -43,14 +43,19 @@ const Register: React.FC = () => {
 	return (
 		<IonPage>
 			<IonContent className="Formstyle">
-				<IonInput className="form" placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
-				<IonInput className="form" placeholder="Name" onIonChange={(e: any) => setName(e.target.value)} />
-				<IonInput type='password' className="form" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)} />
-				<IonInput type='password' className="form" placeholder="Password" onIonChange={(e: any) => setCPassword(e.target.value)} />
-				<IonLabel>Have You Been Vaccinated?</IonLabel>
-				<IonCheckbox checked={vaccinated} onIonChange={e=>setVaccinated(e.detail.checked)}></IonCheckbox>
-				<IonButton className="buttonLogin" onClick={reg}>Register</IonButton>
-				<p className='help'>Already have an Account? <Link to='/login'>Login</Link></p>
+				<IonGrid className="contain">
+					<img src="https://i.postimg.cc/c1cny0Fd/cura-title.png" alt="Cura" className="cura" />
+					<div>
+						<IonInput className="form" placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
+						<IonInput className="form" placeholder="Name" onIonChange={(e: any) => setName(e.target.value)} />
+						<IonInput type='password' className="form" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)} />
+						<IonInput type='password' className="form" placeholder="Confirm password" onIonChange={(e: any) => setCPassword(e.target.value)} />
+						<IonCheckbox className="check" checked={vaccinated} onIonChange={e => setVaccinated(e.detail.checked)}></IonCheckbox>
+						<IonLabel className="label">Have You Been Vaccinated?</IonLabel>
+						<IonButton className="buttonLogin" expand="block" onClick={reg}>Register</IonButton>
+						<p className='help'>Already have an Account? <Link to='/login'>Login</Link></p>
+					</div>
+				</IonGrid>
 			</IonContent>
 		</IonPage>
 	);

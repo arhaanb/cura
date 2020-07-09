@@ -1,10 +1,10 @@
 import * as firebase from 'firebase'
 import { firestore } from 'firebase'
 import { Toast } from './toast';
-import { Redirect } from 'react-router';
-import { stringify } from 'querystring';
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+// import { Redirect } from 'react-router';
+// import { stringify } from 'querystring';
+// import React, { useState } from 'react'
+// import { useDispatch } from 'react-redux';
 
 //Firebase Keys
 const config = {
@@ -34,7 +34,7 @@ export async function loginUS(username: string, password: string) {
 	try {
 		const res = await firebase.auth().signInWithEmailAndPassword(email, password)
 		return (res)
-		return true
+		// return true
 	} catch (error) {
 		Toast(error.message)
 		return false
@@ -47,9 +47,10 @@ export async function registerUser(username: string, password: string) {
 	//ProGamerMove
 	const email = `${username}@minet.com`
 	try {
-		const res = await firebase.auth().createUserWithEmailAndPassword
+		// const res = 
+		await firebase.auth().createUserWithEmailAndPassword
 			(email, password)
-		console.log(res)
+		// console.log(res)
 		return true
 	} catch (error) {
 		Toast(error)

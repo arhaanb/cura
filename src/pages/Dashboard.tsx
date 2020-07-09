@@ -1,21 +1,22 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, useIonViewWillEnter } from '@ionic/react';
-import React, { useState, ComponentLifecycle, useEffect } from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonCol, IonPage, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonGrid } from '@ionic/react';
+import React, { useState, useEffect } from 'react';
+// remove import ComponentLifecycle from react
+// import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
-import { getCurrentUser } from '../firebaseConfig';
-import { Redirect, useHistory } from 'react-router';
+// import { getCurrentUser } from '../firebaseConfig';
+import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { logoutUser } from '../firebaseConfig'
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
-import { error } from 'console';
+// import { error } from 'console';
 const axios = require('axios')
 
 
 const Dashboard: React.FC = () => {
-	const [vaccine,setVaccine] = useState('')
+	const [vaccine, setVaccine] = useState('')
 	const [user, setUser] = useState([{
-		username:'',
-		Vaccinated:false
+		username: '',
+		Vaccinated: false
 	}])
 	const username = useSelector((state: any) => state.user.username)
 	const history = useHistory()
@@ -29,41 +30,42 @@ const Dashboard: React.FC = () => {
 
 
 	useEffect(() => {
-		axios.post('https://api.arhaanb.co/cura/user',{
-			username:username
-		}).then((res:any)=>{
+		axios.post('https://api.arhaanb.co/cura/user', {
+			username: username
+		}).then((res: any) => {
 			setUser(res.data.vaccinated)
-		}).catch((error:any)=>{
-			console.log(error)
+		}).catch((error: any) => {
+			// console.log(error)
 		})
-			
+
 	}, [username])
 
-	useEffect(()=>{
-		if(Boolean(user) === true){
+	useEffect(() => {
+		if (Boolean(user) === true) {
 			const vaccineStatus = 'Vaccinated'
 			setVaccine(vaccineStatus)
-		}else{
+		} else {
 			const vaccineStaus = 'Not Vaccinated'
 			setVaccine(vaccineStaus)
 		}
 
 	})
 
-	console.log(user)
+	// console.log(user)
 	//{username} is the registered username so use that kbye
 	return (
 		<IonPage>
-			<IonHeader>
-			</IonHeader>
 			<IonContent>
-				<IonToolbar>
-				</IonToolbar>
-				<p className='Greeting'> Hello {username}</p>
-				<IonHeader collapse="condense">
-				</IonHeader>
-				<p>{vaccine}</p>
-				<IonButton className='logoutButton' onClick={logout}>Logout</IonButton>
+				<IonGrid>
+					<IonCol>
+						<p className='Greeting'> Hello {username}</p>
+						{/* <IonHeader collapse="condense">
+					</IonHeader> */}
+						{/* <IonTitle size="small">{vaccine}</IonTitle> */}
+						<p>{vaccine}</p>
+						<IonButton className='logoutButton' expand="block" onClick={logout}>Logout</IonButton>
+					</IonCol>
+				</IonGrid>
 				<IonFab slot='fixed' vertical='bottom' horizontal='end'>
 					<IonFabButton>
 						<IonFabButton>
