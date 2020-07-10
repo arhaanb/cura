@@ -1,32 +1,48 @@
-import { IonContent, IonButton, IonModal, IonPage, IonFab, IonFabButton, IonFabList, IonIcon, useIonViewWillEnter, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonItem, IonBadge, IonLabel, IonAlert, useIonViewWillEnter, IonCard,IonCardTitle,IonCardContent,IonCardSubtitle,IonCardHeader, IonInfiniteScroll } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
-import '../fonts/fonts.css';
-import './Hospitals.css';
+import ExploreContainer from '../components/ExploreContainer';
+import './Dashboard.css';
+import { getCurrentUser } from '../firebaseConfig';
+import { Redirect, useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
+import { logoutUser } from '../firebaseConfig'
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline, key } from 'ionicons/icons';
+import { hostname } from 'os';
+import Vaccines from './Vaccines';
+import { State } from 'ionicons/dist/types/stencil-public-runtime';
 const axios = require('axios')
 
 const Hospitals: React.FC = () => {
-	const [showModal, setShowModal] = useState(false);
+	const [showAlert, setShowAlert] = useState(false);
+	
+
 	//Basically, data aa raha hai but it isnt being saved to this state figure out what type the data is and use proper brackets in the state
 	const [hospital, setHospital] = useState([{
-		description: '',
-		location: '',
-		name: '',
-		vaccines: '',
-		id: ''
+		description:'',
+		location:'',
+		name:'',
+		vaccines:'',
+		id:''
 	}
 
 	])
-
-
-	useEffect(() => {
+	const history = useHistory()
+	const username = useSelector((state: any) => state.user.username)
+	function dashrouting(){
+		if(username === 'minet'){
+			history.replace('/admindash')
+		}else{
+			history.replace('/dashboard')
+		}
+	}
+	 useEffect(()=>{
 		axios.get('https://api.arhaanb.co/cura/hospitals')
-			.then((res: any) => {
-				setHospital(res.data)
-			})
-	}, [])
-	// console.log(hospital)
-	// const data = hospital
+		.then((res: any) => {
+			setHospital(res.data)
+		})
+	},[])
+	console.log(hospital)
+	const data = hospital
 
 
 	async function dataloader() {
@@ -34,50 +50,40 @@ const Hospitals: React.FC = () => {
 	}
 
 	//load data every time view mounts
-	// const mount = useIonViewWillEnter(dataloader)
+	const mount = useIonViewWillEnter(dataloader)
 
 
 	return (
 		<IonPage>
-			{/* <IonHeader>
-			</IonHeader> */}
-			<IonContent scrollEvents={true}>
+			
+			<IonHeader>
+			</IonHeader>
+			<IonContent 
+			scrollEvents={true}>
+				<p>HOSPITALS</p>
+				<IonAlert
+					isOpen={showAlert}
+					onDidDismiss={() => setShowAlert(false)}
+					cssClass='my-custom-class'
+					header={'This Hospital is currently Functional!'}
+					subHeader={'hjh'}
+					message={'Feel Free to Visit!'}
+					buttons={['Okay']} />
 
-				<div className="header">
-					<h1 className="center title">Hospitals</h1>
-					<p className="center">Get vaccinated.</p>
-				</div>
+
+			{hospital.map(hospital=>(
 				<IonInfiniteScroll>
-					{hospital.map(hospital => (
-						<IonCard color='dark' className="card" key={hospital.name}>
-							<IonCardHeader>
-								<h1 className="namehosp">{hospital.name} Hospital</h1>
-								<h5 className="location">{hospital.location}</h5>
-								<h5>{hospital.vaccines} vaccines available</h5>
-								<p className="desc">{hospital.description}</p>
-								<div className="flex-center">
-									<IonButton className='appointment' size="small" onClick={() => setShowModal(true)}>Request an Appointment</IonButton>
-								</div>
-								{/* <IonAlert
-									isOpen={showAlert}
-									onDidDismiss={() => setShowAlert(false)}
-									cssClass='my-custom-class'
-									header='Success'
-									subHeader='gg'
-									message='chutchutchut'
-									buttons={['Close']} /> */}
-							</IonCardHeader>
-						</IonCard>
-					))}
-					<IonModal isOpen={showModal} cssClass='my-custom-class'>
-						<h1 className="center topmod">Show this to the scanner at the hospital to avail your vaccine.</h1>
-						<div className="flex-center qrcode">
-							<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
-						</div>
-						<IonButton onClick={() => setShowModal(false)} className="modbtn">Close</IonButton>
-					</IonModal>
+				<IonCard color='dark'>
+				<IonCardHeader>
+					<IonCardTitle key={hospital.name}>{hospital.name}</IonCardTitle>
+					<IonCardSubtitle key={hospital.location}>{hospital.location}</IonCardSubtitle>
+					<IonCardContent key={hospital.description}>{hospital.description}</IonCardContent>
+					<IonButton color='secondary' onClick={() => setShowAlert(true)}>More</IonButton>
+				</IonCardHeader>
+				
+				</IonCard>
 				</IonInfiniteScroll>
-			</IonContent>
+			))}
 
 
 
@@ -95,11 +101,12 @@ const Hospitals: React.FC = () => {
 					<IonFabButton routerLink='/hospitals'>
 						<IonIcon icon={heartOutline}></IonIcon>
 					</IonFabButton>
-					<IonFabButton routerLink='/dashboard'>
+					<IonFabButton onClick={dashrouting}>
 						<IonIcon icon={personOutline}></IonIcon>
 					</IonFabButton>
 				</IonFabList>
 			</IonFab>
+			</IonContent>
 		</IonPage>
 	);
 };

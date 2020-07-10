@@ -1,7 +1,5 @@
 import { IonContent, IonCol, IonPage, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonGrid } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
-// remove import ComponentLifecycle from react
-// import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
 // import { getCurrentUser } from '../firebaseConfig';
 import { Link } from 'react-router-dom';
@@ -32,7 +30,11 @@ const Dashboard: React.FC = () => {
 	}
 
 	//HAAN
-
+	useEffect(() =>{
+		if (username === 'minet'){
+			history.replace('/admindash')
+		}
+	},[history,username])
 
 	useEffect(() => {
 		axios.post('https://api.arhaanb.co/cura/user', {
@@ -63,7 +65,8 @@ const Dashboard: React.FC = () => {
 			setVaccine(vaccineStaus)
 		}
 
-	})
+	},[user])
+
 
 	// console.log(user)
 	//{username} is the registered username so use that kbye

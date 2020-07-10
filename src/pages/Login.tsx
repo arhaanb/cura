@@ -22,10 +22,11 @@ const Login: React.FC = () => {
 			Toast('Logged In')
 			try {
 				dispatch(setUserState(res.user.email))
-				if (Username === 'minet' || Password === 'minettime') {
+				if(Username === 'minet'){
 					history.replace('/admindash')
+				}else{
+					history.replace('/dashboard')
 				}
-				else { history.replace('/dashboard') }
 			}
 			catch (error) {
 				Toast(error)
@@ -33,6 +34,7 @@ const Login: React.FC = () => {
 			}
 		}
 	}
+	
 	return (
 		<IonPage className='body'>
 			<IonContent className="Formstyle">

@@ -1,9 +1,12 @@
 import { IonContent, IonButton, IonModal, IonPage, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
+import { Redirect, useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 import '../fonts/fonts.css';
 import './Hospitals.css';
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
 const axios = require('axios')
+
 
 const Hospitals: React.FC = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -17,6 +20,16 @@ const Hospitals: React.FC = () => {
 	}
 
 	])
+
+	const history = useHistory()
+	const username = useSelector((state: any) => state.user.username)
+	function dashrouting(){
+		if(username === 'minet'){
+			history.replace('/admindash')
+		}else{
+			history.replace('/dashboard')
+		}
+	}
 
 
 	useEffect(() => {
@@ -97,7 +110,7 @@ const Hospitals: React.FC = () => {
 					<IonFabButton routerLink='/hospitals'>
 						<IonIcon icon={heartOutline}></IonIcon>
 					</IonFabButton>
-					<IonFabButton routerLink='/dashboard'>
+					<IonFabButton onClick={dashrouting}>
 						<IonIcon icon={personOutline}></IonIcon>
 					</IonFabButton>
 				</IonFabList>

@@ -3,8 +3,8 @@ import React from 'react';
 // import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
 // import { getCurrentUser } from '../firebaseConfig';
-// import { Redirect, useHistory } from 'react-router';
-// import { useSelector } from 'react-redux';
+ import { Redirect, useHistory } from 'react-router';
+ import { useSelector } from 'react-redux';
 // import { logoutUser } from '../firebaseConfig'
 import '../fonts/fonts.css';
 import './Hospitals.css'
@@ -12,6 +12,16 @@ import { eyedropOutline, barChartOutline, heartOutline, personOutline, analytics
 
 
 const Vaccines: React.FC = () => {
+
+	const history = useHistory()
+	const username = useSelector((state: any) => state.user.username)
+	function dashrouting(){
+		if(username === 'minet'){
+			history.replace('/admindash')
+		}else{
+			history.replace('/dashboard')
+		}
+	}
 
 	//Lmao sorry for messy code but just style kthx ly
 	return (
@@ -66,7 +76,7 @@ const Vaccines: React.FC = () => {
 						<IonFabButton routerLink='/hospitals'>
 							<IonIcon icon={heartOutline}></IonIcon>
 						</IonFabButton>
-						<IonFabButton routerLink='/dashboard'>
+						<IonFabButton onClick={dashrouting}>
 							<IonIcon icon={personOutline}></IonIcon>
 						</IonFabButton>
 					</IonFabList>

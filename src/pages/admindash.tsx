@@ -13,6 +13,7 @@ const axios = require('axios')
 
 
 const Admin: React.FC = () => {
+	const username = useSelector((state: any) => state.user.username)
 	const history = useHistory()
 
 	async function logout() {
@@ -24,7 +25,10 @@ const Admin: React.FC = () => {
 	const [vaccines, setVaccines] = useState('');
 	const [location, setLocation] = useState('')
 	function sendHospital() {
-		axios.post('https://api.arhaanb.co/cura/hospitals', {
+		if (hostp === '' || description === ''|| vaccines === '' || location === '' ) {
+			Toast('Please enter all fields')
+		}else{
+			axios.post('https://api.arhaanb.co/cura/hospitals', {
 			name: hostp,
 			description: description,
 			vaccines: vaccines,
@@ -35,6 +39,15 @@ const Admin: React.FC = () => {
 		}).catch((error: any) => {
 			console.error(error)
 		})
+		}
+	}
+
+	function dashrouting(){
+		if(username === 'minet'){
+			history.replace('/admindash')
+		}else{
+			history.replace('/dashboard')
+		}
 	}
 	//{username} is the registered username so use that kbye
 	return (
@@ -72,7 +85,7 @@ const Admin: React.FC = () => {
 						<IonFabButton routerLink='/hospitals'>
 							<IonIcon icon={heartOutline}></IonIcon>
 						</IonFabButton>
-						<IonFabButton routerLink='/dashboard'>
+						<IonFabButton onClick={dashrouting}>
 							<IonIcon icon={personOutline}></IonIcon>
 						</IonFabButton>
 					</IonFabList>
