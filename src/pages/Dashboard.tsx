@@ -1,4 +1,4 @@
-import { IonContent, IonCol, IonPage, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonGrid } from '@ionic/react';
+import { IonContent, IonCol, IonPage, IonButton, IonRow, IonFab, IonFabButton, IonFabList, IonIcon, IonGrid } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 // import { getCurrentUser } from '../firebaseConfig';
@@ -76,11 +76,11 @@ const Dashboard: React.FC = () => {
 	return (
 		<IonPage>
 			<IonContent>
-				<IonGrid>
+				<IonGrid className="content">
 					<IonCol>
 
 
-						<div className="header">
+						<div className="header dash">
 							<h1 className="center title">Hi, {username}</h1>
 							{vaccine === 'true' &&
 								<div>
@@ -106,38 +106,47 @@ const Dashboard: React.FC = () => {
 							}
 						</div>
 
-						<h1 className="medium">Recent stats</h1>
-						<p className="center fail" key={confirmed}>{confirmed}</p>
-						<p className="center fail" key={recovered}>{recovered}</p>
-						<p className="center fail" key={deaths}>{deaths}</p>
-						<IonButton className='logoutButton' expand="block" onClick={logout}>Logout</IonButton>
+						{/* <div className="data"> */}
+						<IonRow>
+							<IonCol>
+								<div className="smlcard">
+									<h1>18 years</h1>
+									<p>AGE</p>
+								</div>
+							</IonCol>
+							<IonCol>
+								<div className="smlcard">
+									<h1>70kg</h1>
+									<p>WEIGHT</p>
+								</div>
+							</IonCol>
+						</IonRow>
+						{/* </div> */}
 
-						<Bar
-							data={{
-								labels: ['January', 'February', 'March',
-									'April', 'May'],
-								datasets: [
-									{
-										label: 'Rainfall',
-										backgroundColor: 'rgba(75,192,192,1)',
-										borderColor: 'rgba(0,0,0,1)',
-										borderWidth: 2,
-										data: [65, 59, 80, 81, 56]
-									}
-								]
-							}}
-							options={{
-								title: {
-									display: true,
-									text: 'Average Rainfall per month',
-									fontSize: 20
-								},
-								legend: {
-									display: true,
-									position: 'right'
-								}
-							}}
-						/>
+						<h1 className="medium">Recent stats</h1>
+						{/* <div className="statcards"> */}
+						<IonRow>
+							<IonCol>
+								<div className="cardbro confirmed">
+									<h3 className="center fail" key={confirmed}>{confirmed}</h3>
+									<p>CONFIRMED</p>
+								</div>
+							</IonCol>
+							<IonCol>
+								<div className="cardbro recovered">
+									<h3 className="center fail" key={recovered}>{recovered}</h3>
+									<p>RECOVERED</p>
+								</div>
+							</IonCol>
+							<IonCol>
+								<div className="cardbro deaths">
+									<h3 className="center fail" key={deaths}>{deaths}</h3>
+									<p>DEATHS</p>
+								</div>
+							</IonCol>
+						</IonRow>
+						{/* </div> */}
+						<IonButton className='logoutButton' expand="block" onClick={logout}>Logout</IonButton>
 
 					</IonCol>
 				</IonGrid>

@@ -12,6 +12,10 @@
 	margin-top: 0.5em;
 }
 
+.header.dash {
+	padding-bottom: 0;
+}
+
 .circle.red {
 	background-color: crimson;
 }
@@ -34,4 +38,17 @@
 
 .medium {
 	font-family: 'sf med';
+}
+
+.statcards, .data {
+	display: flex;
+	justify-content: space-around;
+}
+
+.cardbro, .smlcard {
+	text-align: center;
+}
+
+.content {
+	padding: 0 1em;
 }

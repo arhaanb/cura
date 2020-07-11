@@ -1,15 +1,18 @@
-import { IonContent, IonButton, IonModal, IonPage, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
+import { IonContent, IonButton, IonModal, IonPage, IonCol, IonGrid, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import '../fonts/fonts.css';
-import './Hospitals.css';
+import './Dashboard.css';
+import './News.css';
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
 const axios = require('axios')
 
 
 const Hospitals: React.FC = () => {
-	const [showModal, setShowModal] = useState(false);
+	const [showBasic, setShowBasic] = useState(false);
+	const [showPlus, setShowPlus] = useState(false);
+	const [showPro, setShowPro] = useState(false);
 	//Basically, data aa raha hai but it isnt being saved to this state figure out what type the data is and use proper brackets in the state
 	const [hospital, setHospital] = useState([{
 		description: '',
@@ -55,43 +58,102 @@ const Hospitals: React.FC = () => {
 			{/* <IonHeader>
 			</IonHeader> */}
 			<IonContent scrollEvents={true}>
+				<IonGrid className="content">
 
-				<div className="header">
-					<h1 className="center title zero">
-						<img src="https://i.postimg.cc/mkwK68Vw/CuraPass.png" alt="" className="curapass" />
-					</h1>
-					<p className="center zero">Get your passes.</p>
-				</div>
-				<IonInfiniteScroll>
-					{hospital.map(hospital => (
-						<IonCard color='dark' className="card" key={hospital.name}>
-							<IonCardHeader>
-								<h1 className="namehosp">{hospital.name} Hospital</h1>
-								<h5 className="location">{hospital.location}</h5>
-								<h5>{hospital.vaccines} vaccines available</h5>
-								<p className="desc">{hospital.description}</p>
-								<div className="flex-center">
-									<IonButton className='appointment' size="small" onClick={() => setShowModal(true)}>Request an Appointment</IonButton>
+					<div className="header">
+						<h1 className="center title zero">
+							<img src="https://i.postimg.cc/mkwK68Vw/CuraPass.png" alt="CuraPass" className="curapass" />
+						</h1>
+						<p className="center zero">Get your passes.</p>
+					</div>
+					<IonInfiniteScroll>
+						<IonCol className="margincol">
+							<IonCard color='dark' className="pass">
+								<div className="head">
+									<h1>Basic</h1>
+									<h5>ETA 1 day</h5>
 								</div>
-								{/* <IonAlert
-									isOpen={showAlert}
-									onDidDismiss={() => setShowAlert(false)}
-									cssClass='my-custom-class'
-									header='Success'
-									subHeader='gg'
-									message='chutchutchut'
-									buttons={['Close']} /> */}
-							</IonCardHeader>
-						</IonCard>
-					))}
-					<IonModal isOpen={showModal} cssClass='my-custom-class'>
-						<h1 className="center topmod">Show this to the scanner at the hospital to avail your vaccine.</h1>
-						<div className="flex-center qrcode">
-							<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
-						</div>
-						<IonButton onClick={() => setShowModal(false)} className="modbtn">Close</IonButton>
-					</IonModal>
-				</IonInfiniteScroll>
+								<h4>Get access to essential facilities.</h4>
+								<h5 className="item">MARKETS</h5>
+								<div className="flex-center">
+									<button onClick={() => setShowBasic(true)} className="">REQUEST</button>
+								</div>
+							</IonCard>
+
+							<IonCard color='dark' className="pass">
+								<div className="head">
+									<h1>Plus</h1>
+									<h5>ETA 1 week</h5>
+								</div>
+								<h4>Get access to non essential services.</h4>
+								<h5 className="item">RESTAURANTS</h5>
+								<h5 className="item">CLOTHING STORES</h5>
+								<div className="flex-center">
+									<button onClick={() => setShowPlus(true)} className="">REQUEST</button>
+								</div>
+							</IonCard>
+
+							<IonCard color='dark' className="pass">
+								<div className="head">
+									<h1>Pro</h1>
+									<h5>ETA 1-2 weeks</h5>
+								</div>
+								<h4>Get access to entertainment facilities.</h4>
+								<h5 className="item">THEATRES</h5>
+								<h5 className="item">MALLS</h5>
+								<div className="flex-center">
+									<button onClick={() => setShowPro(true)} className="">REQUEST</button>
+								</div>
+							</IonCard>
+						</IonCol>
+
+						{/* BASIC PACK MODAL */}
+						<IonModal isOpen={showBasic} cssClass='my-custom-class'>
+							<h3 className="center topmod">
+								<span className="title">Basic Pack</span>
+								<br />
+								Your estimated wait time is 2 days.
+								<	br />
+								Show this QR code at your destination to gain entry.
+							</h3>
+							<div className="flex-center qrcode">
+								<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
+							</div>
+							<IonButton onClick={() => setShowBasic(false)} className="modbtn">Close</IonButton>
+						</IonModal>
+
+						{/* PLUS PACK MODAL */}
+						<IonModal isOpen={showPlus} cssClass='my-custom-class'>
+							<h3 className="center topmod">
+								<span className="title">Plus Pack</span>
+								<br />
+								Your estimated wait time is 1 week.
+								<	br />
+								Show this QR code at your destination to gain entry.
+							</h3>
+							<div className="flex-center qrcode">
+								<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
+							</div>
+							<IonButton onClick={() => setShowPlus(false)} className="modbtn">Close</IonButton>
+						</IonModal>
+
+						{/* PRO PACK MODAL */}
+						<IonModal isOpen={showPro} cssClass='my-custom-class'>
+							<h3 className="center topmod">
+								<span className="title">Pro Pack</span>
+								<br />
+								Your estimated wait time is 2 weeks.
+								<	br />
+								Show this QR code at your destination to gain entry.
+							</h3>
+							<div className="flex-center qrcode">
+								<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
+							</div>
+							<IonButton onClick={() => setShowPro(false)} className="modbtn">Close</IonButton>
+						</IonModal>
+
+					</IonInfiniteScroll>
+				</IonGrid>
 			</IonContent>
 
 

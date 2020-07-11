@@ -49,10 +49,10 @@ const Routing: React.FC = () => {
 				<Route path='/login' component={Login} exact />
 				<Route path='/Register' component={Register} exact />
 				<Route path='/admindash' component={Admin} exact />
-				<Route path='/Dashboard' component={Dashboard} />
-				<Route path='/Hospitals' component={Hospitals} exact />
-				<Route path='/Vaccines' component={Vaccines} exact />
-				<Route path='/News' component={News} exact />
+				<Route path='/dashboard' component={Dashboard} />
+				<Route path='/hospitals' component={Hospitals} exact />
+				<Route path='/vaccines' component={Vaccines} exact />
+				<Route path='/news' component={News} exact />
 			</IonRouterOutlet>
 		</IonReactRouter>)
 }
