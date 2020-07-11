@@ -52,12 +52,8 @@ const Admin: React.FC = () => {
 	//{username} is the registered username so use that kbye
 	return (
 		<IonPage>
-			<IonHeader>
-			</IonHeader>
 			<IonContent>
-				<IonToolbar>
-				</IonToolbar>
-				<p className='Greeting'> Hello Minte</p>
+				<p className='Greeting'> Hello Team Haywire!</p>
 				<IonHeader collapse="condense">
 				</IonHeader>
 				<IonInput className="form" required={true} placeholder="hospital" onIonChange={(e: any) => setHosp(e.target.value)} />

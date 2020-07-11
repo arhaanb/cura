@@ -73,10 +73,12 @@ const Hospitals: React.FC = () => {
 									<h1>Basic</h1>
 									<h5>ETA 1 day</h5>
 								</div>
-								<h4>Get access to essential facilities.</h4>
-								<h5 className="item">MARKETS</h5>
-								<div className="flex-center">
-									<button onClick={() => setShowBasic(true)} className="">REQUEST</button>
+								<div className="passcon">
+									<h4>Get access to essential facilities.</h4>
+									<h5 className="item">MARKETS</h5>
+									<div className="flex-center">
+										<button onClick={() => setShowBasic(true)} className="">REQUEST</button>
+									</div>
 								</div>
 							</IonCard>
 
@@ -85,11 +87,13 @@ const Hospitals: React.FC = () => {
 									<h1>Plus</h1>
 									<h5>ETA 1 week</h5>
 								</div>
-								<h4>Get access to non essential services.</h4>
-								<h5 className="item">RESTAURANTS</h5>
-								<h5 className="item">CLOTHING STORES</h5>
-								<div className="flex-center">
-									<button onClick={() => setShowPlus(true)} className="">REQUEST</button>
+								<div className="passcon">
+									<h4>Get access to non essential services.</h4>
+									<h5 className="item">RESTAURANTS</h5>
+									<h5 className="item">CLOTHING STORES</h5>
+									<div className="flex-center">
+										<button onClick={() => setShowPlus(true)} className="">REQUEST</button>
+									</div>
 								</div>
 							</IonCard>
 
@@ -98,11 +102,13 @@ const Hospitals: React.FC = () => {
 									<h1>Pro</h1>
 									<h5>ETA 1-2 weeks</h5>
 								</div>
-								<h4>Get access to entertainment facilities.</h4>
-								<h5 className="item">THEATRES</h5>
-								<h5 className="item">MALLS</h5>
-								<div className="flex-center">
-									<button onClick={() => setShowPro(true)} className="">REQUEST</button>
+								<div className="passcon">
+									<h4>Get access to entertainment facilities.</h4>
+									<h5 className="item">THEATRES</h5>
+									<h5 className="item">MALLS</h5>
+									<div className="flex-center">
+										<button onClick={() => setShowPro(true)} className="">REQUEST</button>
+									</div>
 								</div>
 							</IonCard>
 						</IonCol>

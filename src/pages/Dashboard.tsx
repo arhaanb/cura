@@ -110,20 +110,21 @@ const Dashboard: React.FC = () => {
 						<IonRow>
 							<IonCol>
 								<div className="smlcard">
-									<h1>18 years</h1>
+									<h1 className="medium">18 years</h1>
 									<p>AGE</p>
 								</div>
 							</IonCol>
 							<IonCol>
 								<div className="smlcard">
-									<h1>70kg</h1>
+									<h1 className="medium">70kg</h1>
 									<p>WEIGHT</p>
 								</div>
 							</IonCol>
 						</IonRow>
 						{/* </div> */}
 
-						<h1 className="medium">Recent stats</h1>
+						<h1 className="medium stat">Recent stats</h1>
+						<p>COVID-19 India</p>
 						{/* <div className="statcards"> */}
 						<IonRow>
 							<IonCol>

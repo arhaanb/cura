@@ -10,8 +10,16 @@
 	font-size: 4em;
 }
 
+.passcon {
+	padding: 1em;
+}
+
 .margincol {
 	padding: 0 2em;
+}
+
+.my-custom-class .topmod {
+	padding: 0 1em;
 }
 
 .head {

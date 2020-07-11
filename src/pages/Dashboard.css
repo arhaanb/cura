@@ -47,8 +47,49 @@
 
 .cardbro, .smlcard {
 	text-align: center;
+	margin: 0.5em;
 }
 
 .content {
 	padding: 0 1em;
+}
+
+.smlcard, .cardbro {
+	border-style: solid;
+	padding: 1em;
+	border-radius: 1em;
+}
+
+.cardbro.recovered {
+	border-color: rgb(2, 122, 2);
+}
+
+.cardbro.confirmed {
+	border-color: rgb(214, 214, 34);
+}
+
+.cardbro.deaths {
+	border-color: rgb(233, 68, 68);
+}
+
+.smlcard {
+	/* background-color: rgba(147, 25, 163, 1);
+	border-color: rgb(147, 25, 163); */
+	background: #00c6ff;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #0072ff, #00c6ff);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #0072ff, #00c6ff);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	border-style: none;
+}
+
+.logoutButton {
+	margin-top: 2em;
+}
+
+.medium.stat {
+	font-size: 2em;
+	margin: 0;
+	margin-top: 1em;
 }
