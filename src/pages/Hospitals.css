@@ -32,6 +32,7 @@
 	background: -webkit-linear-gradient(to right, #2a56a1, #4e6cce);
 	background: linear-gradient(to right, #2a56a1, #4e6cce);
 	border-radius: 1em;
+	margin-bottom: 2em;
 }
 
 .card.new p {

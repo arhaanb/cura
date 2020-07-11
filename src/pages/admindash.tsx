@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonInput } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonInput, IonGrid, IonCol } from '@ionic/react';
 import React, { useState } from 'react';
 // import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
@@ -53,39 +53,46 @@ const Admin: React.FC = () => {
 	return (
 		<IonPage>
 			<IonContent>
-				<p className='Greeting'> Hello Team Haywire!</p>
-				<IonHeader collapse="condense">
-				</IonHeader>
-				<IonInput className="form" required={true} placeholder="hospital" onIonChange={(e: any) => setHosp(e.target.value)} />
-				<IonInput className="form" required={true} placeholder="description" onIonChange={(e: any) => setDescription(e.target.value)} />
-				<IonInput className="form" required={true} placeholder="vaccines" onIonChange={(e: any) => setVaccines(e.target.value)} />
-				<IonInput className="form" required={true} placeholder="Location" onIonChange={(e: any) => setLocation(e.target.value)} />
-				<IonButton color="secondary" className="buttonLogin" onClick={sendHospital}>Register</IonButton>
-				<br>
-				</br>
-				<br />
-				<IonButton className='logoutButton' onClick={logout}>Logout</IonButton>
-				<IonFab slot='fixed' vertical='bottom' horizontal='end'>
-					<IonFabButton>
-						<IonFabButton>
-							<IonIcon icon={analyticsOutline} />
-						</IonFabButton>
-					</IonFabButton>
-					<IonFabList side='top'>
-						<IonFabButton routerLink='/Vaccines'>
-							<IonIcon icon={eyedropOutline} />
-						</IonFabButton>
-						<IonFabButton routerLink='/news'>
-							<IonIcon icon={barChartOutline}></IonIcon>
-						</IonFabButton>
-						<IonFabButton routerLink='/hospitals'>
-							<IonIcon icon={heartOutline}></IonIcon>
-						</IonFabButton>
-						<IonFabButton onClick={dashrouting}>
-							<IonIcon icon={personOutline}></IonIcon>
-						</IonFabButton>
-					</IonFabList>
-				</IonFab>
+				<IonGrid className="content">
+					<IonCol>
+						<div className="header">
+							<h1 className="center title">Hi, Team Haywire!</h1>
+							<h1 className="center medium">You're an admin :)</h1>
+						</div>
+
+						<h1>Add a hospital</h1>
+						<IonInput className="form" required={true} placeholder="hospital" onIonChange={(e: any) => setHosp(e.target.value)} />
+						<IonInput className="form" required={true} placeholder="description" onIonChange={(e: any) => setDescription(e.target.value)} />
+						<IonInput className="form" required={true} placeholder="vaccines" onIonChange={(e: any) => setVaccines(e.target.value)} />
+						<IonInput className="form" required={true} placeholder="Location" onIonChange={(e: any) => setLocation(e.target.value)} />
+						<IonButton color="secondary" className="buttonLogin" onClick={sendHospital}>Register</IonButton>
+						<br>
+						</br>
+						<br />
+						<IonButton className='logoutButton' expand="block" onClick={logout}>Logout</IonButton>
+						<IonFab slot='fixed' vertical='bottom' horizontal='end'>
+							<IonFabButton>
+								<IonFabButton>
+									<IonIcon icon={analyticsOutline} />
+								</IonFabButton>
+							</IonFabButton>
+							<IonFabList side='top'>
+								<IonFabButton routerLink='/Vaccines'>
+									<IonIcon icon={eyedropOutline} />
+								</IonFabButton>
+								<IonFabButton routerLink='/news'>
+									<IonIcon icon={barChartOutline}></IonIcon>
+								</IonFabButton>
+								<IonFabButton routerLink='/hospitals'>
+									<IonIcon icon={heartOutline}></IonIcon>
+								</IonFabButton>
+								<IonFabButton onClick={dashrouting}>
+									<IonIcon icon={personOutline}></IonIcon>
+								</IonFabButton>
+							</IonFabList>
+						</IonFab>
+					</IonCol>
+				</IonGrid>
 			</IonContent>
 		</IonPage>
 	);

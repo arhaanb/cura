@@ -37,25 +37,73 @@ const Vaccines: React.FC = () => {
 				<IonCard color='tertiary' className="card new">
 					<IonCardHeader>
 						<IonCardTitle className="center tag">COV6699ee</IonCardTitle>
-						{/* <IonCardSubtitle>its 4AM im sleepy</IonCardSubtitle> */}
 						<p><span className="subhead">Type:</span>Antibody Treatment</p>
 						<p><span className="subhead">Stage:</span>Completed, in Production</p>
 						<p className="lastchild"><span className="subhead">Research Center:</span>MINET Biotech</p>
 						<p>
-							Sona Sone Patole Lakhaan Sona Sone Patole Yeah... Ae Takdiyaan Rehndiyaan Aankhaan
-							Ae Takdiyaan Rehndiyaan..
-							Yeah...
-							Ho...
-							Wassup
-							You Soniyo, She Put Up A Show
-							Unless I'm Impress, Baby I Gotta Go
-							I Won't Mind Tell You That I Take You Floor
-							But Tonight No Bites
-							Cause The Wife Will Know
+							Developed by Aditya Pramar and Arhaan Bahadur, COV6699ee immobilises COVID19 within
+							two hours of being administered. With minimal side effects, it cleared all testing phases in
+							less than half a year. The discovery of this vaccine has nominated its creators for the Nobel Prize
+							in Physiology.
 						</p>
 					</IonCardHeader>
 					<IonCardContent>
-
+					</IonCardContent>
+				</IonCard>
+				{/* <IonCard color='tertiary' className="card new">
+					<IonCardHeader>
+						<IonCardTitle className="center tag">Bacillus Calmette-Guerin</IonCardTitle>
+						<p><span className="subhead">Type:</span>Live-attenuated vaccine</p>
+						<p><span className="subhead">Stage:</span>Phase 2/3</p>
+						<p className="lastchild"><span className="subhead">Research Center:</span>University of Melbourne</p>
+						<p>
+							There is no evidence that the Bacille Calmette-Guérin vaccine (BCG) protects people against infection with COVID-19 virus.
+							Two clinical trials addressing this question are underway, and WHO will evaluate the evidence when it is available.
+						</p>
+					</IonCardHeader>
+					<IonCardContent>
+					</IonCardContent>
+				</IonCard>
+				<IonCard color='tertiary' className="card new">
+					<IonCardHeader>
+						<IonCardTitle className="center tag">mRNA-1273</IonCardTitle>
+						<p><span className="subhead">Type:</span>mRNA-Command</p>
+						<p><span className="subhead">Stage:</span>Phase 2/3</p>
+						<p className="lastchild"><span className="subhead">Research Center:</span>Moderna</p>
+						<p>
+							mRNA is an information molecule and Moderna, Inc. designs its mRNA vaccines using the sequence of the virus, not by working on the virus itself.
+							This mRNA platform provides significant advantages in speed and efficiency, across basic science, manufacturing, and clinical development.
+						</p>
+					</IonCardHeader>
+					<IonCardContent>
+					</IonCardContent>
+				</IonCard> */}
+				<IonCard color='tertiary' className="card new">
+					<IonCardHeader>
+						<IonCardTitle className="center tag">BNT162</IonCardTitle>
+						<p><span className="subhead">Type:</span>mRNA-Command</p>
+						<p><span className="subhead">Stage:</span>Phase 2/3</p>
+						<p className="lastchild"><span className="subhead">Research Center:</span>Pfizer</p>
+						<p>
+							BNT162b1 is a vaccine candidate based upon mRNA.
+							The four vaccine candidates are the first from BioNTech’s COVID-19-focused project “Lightspeed”, each representing different mRNA formats and target antigens.
+						</p>
+					</IonCardHeader>
+					<IonCardContent>
+					</IonCardContent>
+				</IonCard>
+				<IonCard color='tertiary' className="card new">
+					<IonCardHeader>
+						<IonCardTitle className="center tag">AZD1222</IonCardTitle>
+						<p><span className="subhead">Type:</span>Antibody Treatement</p>
+						<p><span className="subhead">Stage:</span>Phase 2/3</p>
+						<p className="lastchild"><span className="subhead">Research Center:</span>The University of Oxford</p>
+						<p>
+							The AZD1222 coronavirus vaccine candidate, formerly known as ChAdOx1 nCoV-19, is made from a virus (ChAdOx1), which is a weakened version of a common cold virus (adenovirus) that causes infections in chimpanzees,
+							that has been genetically changed so that it is impossible for it to grow in humans.
+						</p>
+					</IonCardHeader>
+					<IonCardContent>
 					</IonCardContent>
 				</IonCard>
 
