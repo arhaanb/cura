@@ -1,8 +1,8 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonInput } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonToolbar, IonButton, IonFab, IonFabButton, IonFabList, IonIcon, IonInput } from '@ionic/react';
 import React, { useState } from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+// import ExploreContainer from '../components/ExploreContainer';
 import './Dashboard.css';
-import { getCurrentUser } from '../firebaseConfig';
+// import { getCurrentUser } from '../firebaseConfig';
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { logoutUser } from '../firebaseConfig'
@@ -25,27 +25,27 @@ const Admin: React.FC = () => {
 	const [vaccines, setVaccines] = useState('');
 	const [location, setLocation] = useState('')
 	function sendHospital() {
-		if (hostp === '' || description === ''|| vaccines === '' || location === '' ) {
+		if (hostp === '' || description === '' || vaccines === '' || location === '') {
 			Toast('Please enter all fields')
-		}else{
+		} else {
 			axios.post('https://api.arhaanb.co/cura/hospitals', {
-			name: hostp,
-			description: description,
-			vaccines: vaccines,
-			location: location
-		}).then((res: any) => {
-			console.log(res)
-			Toast('Hospital Registered')
-		}).catch((error: any) => {
-			console.error(error)
-		})
+				name: hostp,
+				description: description,
+				vaccines: vaccines,
+				location: location
+			}).then((res: any) => {
+				console.log(res)
+				Toast('Hospital Registered')
+			}).catch((error: any) => {
+				console.error(error)
+			})
 		}
 	}
 
-	function dashrouting(){
-		if(username === 'minet'){
+	function dashrouting() {
+		if (username === 'minet') {
 			history.replace('/admindash')
-		}else{
+		} else {
 			history.replace('/dashboard')
 		}
 	}

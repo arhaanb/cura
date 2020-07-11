@@ -7,6 +7,7 @@ import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { logoutUser } from '../firebaseConfig'
 import { eyedropOutline, barChartOutline, heartOutline, personOutline, analyticsOutline } from 'ionicons/icons';
+import { Bar } from 'react-chartjs-2';
 // import { error } from 'console';
 const axios = require('axios')
 
@@ -23,6 +24,8 @@ const Dashboard: React.FC = () => {
 	const username = useSelector((state: any) => state.user.username)
 	const history = useHistory()
 
+	// const state = 
+
 
 	async function logout() {
 		await logoutUser()
@@ -30,11 +33,11 @@ const Dashboard: React.FC = () => {
 	}
 
 	//HAAN
-	useEffect(() =>{
-		if (username === 'minet'){
+	useEffect(() => {
+		if (username === 'minet') {
 			history.replace('/admindash')
 		}
-	},[history,username])
+	}, [history, username])
 
 	useEffect(() => {
 		axios.post('https://api.arhaanb.co/cura/user', {
@@ -65,7 +68,7 @@ const Dashboard: React.FC = () => {
 			setVaccine(vaccineStaus)
 		}
 
-	},[user])
+	}, [user])
 
 
 	// console.log(user)
@@ -109,6 +112,32 @@ const Dashboard: React.FC = () => {
 						<p className="center fail" key={deaths}>{deaths}</p>
 						<IonButton className='logoutButton' expand="block" onClick={logout}>Logout</IonButton>
 
+						<Bar
+							data={{
+								labels: ['January', 'February', 'March',
+									'April', 'May'],
+								datasets: [
+									{
+										label: 'Rainfall',
+										backgroundColor: 'rgba(75,192,192,1)',
+										borderColor: 'rgba(0,0,0,1)',
+										borderWidth: 2,
+										data: [65, 59, 80, 81, 56]
+									}
+								]
+							}}
+							options={{
+								title: {
+									display: true,
+									text: 'Average Rainfall per month',
+									fontSize: 20
+								},
+								legend: {
+									display: true,
+									position: 'right'
+								}
+							}}
+						/>
 
 					</IonCol>
 				</IonGrid>

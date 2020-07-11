@@ -1,6 +1,6 @@
 import { IonContent, IonButton, IonModal, IonPage, IonFab, IonFabButton, IonFabList, IonIcon, IonCard, IonCardHeader, IonInfiniteScroll } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
-import { Redirect, useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import '../fonts/fonts.css';
 import './Hospitals.css';
@@ -23,10 +23,10 @@ const Hospitals: React.FC = () => {
 
 	const history = useHistory()
 	const username = useSelector((state: any) => state.user.username)
-	function dashrouting(){
-		if(username === 'minet'){
+	function dashrouting() {
+		if (username === 'minet') {
 			history.replace('/admindash')
-		}else{
+		} else {
 			history.replace('/dashboard')
 		}
 	}
