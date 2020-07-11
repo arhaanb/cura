@@ -115,7 +115,7 @@ const Hospitals: React.FC = () => {
 
 						{/* BASIC PACK MODAL */}
 						<IonModal isOpen={showBasic} cssClass='my-custom-class'>
-							<h3 className="center topmod">
+							<h3 className="center topmod white">
 								<span className="title">Basic Pack</span>
 								<br />
 								Your estimated wait time is 2 days.
@@ -130,7 +130,7 @@ const Hospitals: React.FC = () => {
 
 						{/* PLUS PACK MODAL */}
 						<IonModal isOpen={showPlus} cssClass='my-custom-class'>
-							<h3 className="center topmod">
+							<h3 className="center topmod white">
 								<span className="title">Plus Pack</span>
 								<br />
 								Your estimated wait time is 1 week.
@@ -145,7 +145,7 @@ const Hospitals: React.FC = () => {
 
 						{/* PRO PACK MODAL */}
 						<IonModal isOpen={showPro} cssClass='my-custom-class'>
-							<h3 className="center topmod">
+							<h3 className="center topmod white">
 								<span className="title">Pro Pack</span>
 								<br />
 								Your estimated wait time is 2 weeks.

@@ -91,7 +91,7 @@ const Hospitals: React.FC = () => {
 							</IonCard>
 						))}
 						<IonModal isOpen={showModal} cssClass='my-custom-class'>
-							<h1 className="center topmod">Show this to the scanner at the hospital to avail your vaccine.</h1>
+							<h1 className="center topmod white">Show this to the scanner at the hospital to avail your vaccine.</h1>
 							<div className="flex-center qrcode">
 								<img src="https://i.postimg.cc/sDptWVk5/qr.png" alt="QR Code" className="QR" />
 							</div>
