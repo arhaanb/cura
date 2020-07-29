@@ -77,7 +77,7 @@ const Admin: React.FC = () => {
 				<IonGrid className="content">
 					<IonCol>
 						<div className="header">
-							<h1 className="center title">Hi, Team Haywire!</h1>
+							<h1 className="center title">Hi Doc!</h1>
 							<h1 className="center medium">You're an admin :)</h1>
 						</div>
 
